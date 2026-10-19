@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: agentxchange-marketplace
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24.0.0
+      - key: MODE
+        value: demo
+      - key: DATABASE_PATH
+        value: /tmp/agentxchange.sqlite
